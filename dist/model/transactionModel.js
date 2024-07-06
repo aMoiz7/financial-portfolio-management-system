@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { number } from "zod";
 const TransactionModel = new Schema({
     type: {
         type: String,
@@ -7,8 +6,8 @@ const TransactionModel = new Schema({
         require: true
     },
     amount: {
-        type: number,
-        required: true
+        type: Number,
+        require: true
     },
     asset: {
         type: String,
@@ -18,7 +17,7 @@ const TransactionModel = new Schema({
         }
     },
     price: {
-        type: number,
+        type: Number,
         require: function () {
             //@ts-ignore
             return this.type === 'buy' || this.type === 'sell';

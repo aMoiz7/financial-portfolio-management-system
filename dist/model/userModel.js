@@ -27,6 +27,6 @@ userSchema.methods.verifyPassword = async function (password) {
 const secret = process.env.SECRET_KEY;
 console.log(secret);
 userSchema.methods.generateAccessToken = async function () {
-    return Jwt.sign({ username: this.username }, secret, { expiresIn: "1D" });
+    return Jwt.sign({ username: this.username, userId: this._id }, secret, { expiresIn: "1D" });
 };
 export const user = mongoose.model("user", userSchema);
